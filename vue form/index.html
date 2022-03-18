@@ -8,14 +8,15 @@
     <style>
         html{
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
         }
         #app{
             justify-content:center ;
             text-align: center;
-            height: 30em;
+            height: 25em;
             width: 30em;
+            margin-left: 15em;
             background-image:linear-gradient(#845EC2, #D65DB1, #FF6F91, #FFC75F, #FFC75F) ;
         }
         v-cloak{
@@ -38,6 +39,14 @@
         button:hover{
             background-color: #FF9671;
             border: 2px solid #FFC75F;
+        }
+        .newForm{
+            display: block;
+            height: 25em;
+            width: 30em;
+            margin-left: 33em;
+            margin-top: -397px;
+            background-image: linear-gradient(#845EC2, #B39CD0, #FBEAFF, #00C9A7);
         }
     </style>
 </head>
@@ -75,15 +84,31 @@
             <label>{{nameLabel}}
             <input type="text" v-model="name"/>
             </label>
-            <button v-on:click="isVisible=!isVisible">SUBMIT</button>
+            <button>SUBMIT</button>
         </form>
+        <div class="newForm">
+        <form @submit.prevent="handleSubmit" >
+        <h1>{{ tittle}}</h1>
+        <label>{{emailLabel}}
+            <input type="email" class="input-em" v-model="email"/>
+            </label>
+            <label>{{passwordLabel}}
+            <input type="password" v-model="password"/>
+            </label>
+            <label>{{nameLabel}}
+            <input type="text" v-model="name"/>
+            </label>
+            <button>SUBMIT</button>
+        </form>
+        </div>
       `,
       data(){
           return{
+              join:"",
               nameLabel:'Enter Name',
               passwordLabel:'Enter Password',
               emailLabel: 'Enter Email',
-              tittle: 'LOGIN FORM',
+              tittle: 'REGISTRATION FORM',
               email:'',
               password:'',
               name:'',
@@ -91,7 +116,7 @@
       },
       methods:{
           handleSubmit(){
-              console.log(this.email, this.password, this.name, "subitted")
+              console.log(this.email, this.password, this.name, "submitted")
           }
       }
   })
